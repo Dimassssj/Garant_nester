@@ -1,17 +1,130 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Отзывы о работе</title>
+  <title>TrustNest — Гарант Nester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #e53935;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    .notice {
+      background: #ffe0e0;
+      border: 1px solid #e53935;
+      padding: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #b71c1c;
+    }
+    .reviews {
+      margin-bottom: 40px;
+    }
+    .review {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .review strong {
+      color: #e53935;
+    }
+    form textarea, form input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      padding: 10px 20px;
+      background-color: #e53935;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
-  <h2>📝 Добавить отзыв</h2>
-  <form>
-    <label>Имя:</label><br>
-    <input type="text" name="name" placeholder="Введите имя"><br><br>
-    <label>Отзыв:</label><br>
-    <textarea name="review" rows="4" placeholder="Ваш отзыв..."></textarea><br><br>
-    <button type="submit" disabled>Отправить</button>
-  </form>
-</body>
+  <header>
+    <h1>TrustNest — Гарант Nester</h1>
+    <p><a href="https://t.me/nester_garant" style="color: #fff; text-decoration: underline;">@nester_garant</a> — единственный настоящий телеграм</p>
+  </header>
+  <div class="container">
+    <div class="notice">
+      Только по этой ссылке работает настоящий гарант. Берегитесь фейков.
+    </div><div class="reviews" id="reviews"></div>
+
+<h3>Добавить отзыв</h3>
+<form onsubmit="addReview(event)">
+  <input type="text" id="name" placeholder="Ваше имя и фамилия (например, Иван Петров)" required>
+  <textarea id="text" placeholder="Ваш отзыв..." rows="4" required></textarea>
+  <button type="submit">Опубликовать</button>
+</form>
+
+  </div>  <div class="footer">
+    © 2025 TrustNest. Все права защищены.
+  </div>  <script>
+    const names = ["Алексей Смирнов", "Иван Кузнецов", "Мария Иванова", "Дмитрий Соколов", "Ольга Попова", "Никита Волков", "Татьяна Орлова", "Сергей Морозов", "Екатерина Павлова", "Андрей Лебедев"];
+    const phrases = [
+      "Спасибо, всё чётко — получил канал за 8500₽.",
+      "Быстро и без обмана. Продал TikTok за 17000, деньги пришли сразу.",
+      "Работаем не первый раз, доверяю на 100%.",
+      "Покупал Steam-аккаунт за 5800₽. Всё отлично, получил за 5 минут.",
+      "Продал телеграм-канал через гаранта, сумма 22 000₽. Деньги получил.",
+      "Всё супер, спасибо. Сделка прошла по 45000 без задержек.",
+      "Думаю, лучший гарант. Уже шестая сделка на TrustNest.",
+      "Покупал Discord-канал, всё прошло идеально. Спасибо!",
+      "Сделка на 30000 прошла чётко. Рекомендую!",
+      "Продал ютуб-канал, всё прозрачно, комиссия 1%."
+    ];
+
+    function generateReviews() {
+      const container = document.getElementById('reviews');
+      for (let i = 0; i < 1600; i++) {
+        const name = names[Math.floor(Math.random() * names.length)];
+        const text = phrases[Math.floor(Math.random() * phrases.length)];
+        const div = document.createElement('div');
+        div.className = 'review';
+        div.innerHTML = <strong>${name}</strong><br>${text};
+        container.appendChild(div);
+      }
+    }
+
+    function addReview(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const text = document.getElementById('text').value;
+      const container = document.getElementById('reviews');
+      const div = document.createElement('div');
+      div.className = 'review';
+      div.innerHTML = <strong>${name}</strong><br>${text};
+      container.insertBefore(div, container.firstChild);
+      document.getElementById('name').value = '';
+      document.getElementById('text').value = '';
+    }
+
+window.onload = generateReviews;
+  </script></body>
 </html>
